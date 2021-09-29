@@ -1,7 +1,6 @@
 package edu.cnm.deepdive;
 
 import static org.junit.jupiter.api.Assertions.*;
-
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -12,6 +11,14 @@ class FizzBuzzTest {
   static final int[] fizzBuzzValues = {15, 90, 0, 60, 135, 1500};
   static final int[] neitherValues = {17, 2, 98, 7, 97};
 
+  @Test
+  @DisplayName("Test Fizz values")
+  void getFizzBuzz_fizz() {
+    FizzBuzz fb = new FizzBuzz();
+    for (int value : fizzValues) {
+      assertEquals(FizzBuzz.FIZZ_VALUE, fb.getFizzBuzz(value));
+    }
+  }
 
   @Test
   @DisplayName("Test Buzz values")
@@ -31,7 +38,12 @@ class FizzBuzzTest {
     }
   }
 
-
-
-
+  @Test
+  @DisplayName("Test Neither values")
+  void getFizzBuzz_neither() {
+    FizzBuzz fb = new FizzBuzz();
+    for (int value : neitherValues) {
+      assertEquals(String.valueOf(value), fb.getFizzBuzz(value));
+    }
+  }
 }
