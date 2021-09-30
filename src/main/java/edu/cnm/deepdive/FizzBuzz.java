@@ -1,5 +1,7 @@
 package edu.cnm.deepdive;
 
+import java.util.EnumSet;
+
 /**
  * Implements a method that computes the FizzBuzz {@link String} value for any non-negative integer.
  * This implementation ignores the common form of the FizzBuzz challenge (i.e. "Write the numbers
@@ -8,12 +10,9 @@ package edu.cnm.deepdive;
  * implementation includes a method that produces the single FizzBuzz value for a single integer.
  * This allows for more direct unit testing.
  */
+
 public class FizzBuzz {
 
-
-  static final String FIZZ_BUZZ_VALUE = "FIZZ_BUZZ";
-  static final String FIZZ_VALUE = "Fizz";
-  static final String BUZZ_VALUE = "Buzz";
 
   /**
    * Computes and returns {@link String} FizzBuzz value for a specified non-negative integer. Return
@@ -23,20 +22,18 @@ public class FizzBuzz {
    * @param value {@code int} for which the FizzBuzz value will be computed.
    * @return {@link String} corresponding to {@code value}
    */
-  public String getFizzBuzz(int value) {
-    String str;
-    /*Remember, everything else goes here, similar to Flowgarithm Chart!! */
+
+  public EnumSet<FizzBuzzValue> getFizzBuzz(int value) {
+    EnumSet<FizzBuzzValue> valueSet = EnumSet.noneOf(FizzBuzzValue.class);
     if (value % 3 == 0) {
-      if (value % 5 == 0) {
-        str = FIZZ_BUZZ_VALUE;
-      } else {
-        str = FIZZ_VALUE;
-      }
-    } else if (value % 5 == 0) {
-      str = BUZZ_VALUE;
-    } else {
-      str = String.valueOf(value);
+      valueSet.add(FizzBuzzValue.FIZZ);
     }
-    return str;
+    if (value % 5 == 0) {
+      valueSet.add(FizzBuzzValue.BUZZ);
+
+    }
+    return valueSet;
   }
+
+
 }
